@@ -1,0 +1,18 @@
+STEP1:  Create a master (note ec2 t2 medium)
+
+Create an ec2 with t2.medium type and run the below command 
+
+curl -s https://raw.githubusercontent.com/jaintpharsha/install/main/k8s/cluster_setup_using_kubeadm_new.sh | bash -s master 
+
+if the above command executes successfully then we get kubeadm join command with the token save this command in a separate file, and run this join command in worker nodes to add to this master.
+
+
+ 
+STEP2: Add worker nodes  (note ec2 t2 micro)
+
+Create 2 ec2 with t2.micro type and run the below command
+ 
+curl -s https://raw.githubusercontent.com/jaintpharsha/install/main/k8s/cluster_setup_using_kubeadm_new.sh | bash -s worker 
+
+Run the kubeadm join command which we got from a master node in worker nodes to add to that master. 
+(If the join command is lost run this in the master node: kubeadm token create --pri
